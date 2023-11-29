@@ -18,6 +18,6 @@ func main() {
 		log.Fatalf("Error creating Elasticsearch client: %v", err)
 	}
 
-	// Now you can use esClient with your services
+	// Use esClient with your services
 	// ...
 }

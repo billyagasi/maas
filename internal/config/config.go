@@ -4,15 +4,12 @@ import "github.com/spf13/viper"
 
 type Config struct {
 	Elasticsearch struct {
-		Host     string
-		Port     int
-		Scheme   string
-		Username string
-		Password string
+		Host   string
+		Port   int
+		Scheme string
 	}
 }
 
-// LoadConfig reads configuration from file or environment variables.
 func LoadConfig(path string) (*Config, error) {
 	var cfg Config
 
