@@ -1,28 +1,23 @@
 package main
 
 import (
-	"fmt"
+	"log"
 
 	"github.com/billyagasi/maas/internal/config"
 	"github.com/billyagasi/maas/internal/elasticsearch"
-	"github.com/billyagasi/maas/internal/service"
 )
 
 func main() {
-	cfg, err := config.LoadConfig()
+	cfg, err := config.LoadConfig("./configs")
 	if err != nil {
-		panic(err)
+		log.Fatalf("Error loading config: %v", err)
 	}
 
-	client, err := elasticsearch.NewClient(cfg)
+	esClient, err := elasticsearch.NewClient(cfg)
 	if err != nil {
-		panic(err)
+		log.Fatalf("Error creating Elasticsearch client: %v", err)
 	}
 
-	indexInfo, err := service.GetIndicesInfo(client)
-	if err != nil {
-		panic(err)
-	}
-
-	fmt.Println(indexInfo)
+	// Now you can use esClient with your services
+	// ...
 }
